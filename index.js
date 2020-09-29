@@ -2,7 +2,6 @@ const GetGoogleFonts = require('get-google-fonts');
 const fs = require('fs')
 const path = require('path');
 const util = require('util');
-const css = require('css')
 
 const plugin = {
   name: 'elderjs-plugin-google-font-optimizer',
@@ -31,7 +30,7 @@ const plugin = {
   hooks: [
     {
       hook: 'bootstrap',
-      name: 'downloads fonts, injects font-face definitions and creates CSS custom properties.',
+      name: 'downloads fonts, injects font-face definitions.',
       description: `A description of what this hook does.`,
       priority: 50,
       run: async ({ plugin }) => {
@@ -46,14 +45,12 @@ const plugin = {
         const rawData = await readFile(settings.distDir + '/auto-generated-fonts.css')
         const cssContent = rawData.toString('utf8')
 
+
         plugin.fonts = cssContent
 
-        if (plugin.init) {
-          plugin.bootstrapRan = true;
-          return {
-            plugin,
-          };
-        }
+        return {
+          plugin,
+        };
       }
     },
     {
