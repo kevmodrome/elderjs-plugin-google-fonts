@@ -7,14 +7,13 @@
     "elderjs",
     "svelte",
     "ssg",
-    "static",
-    "site",
-    "generator"
+    "google-fonts"
   ],
+  "homepage": "https://svelte.school/opensource",
+  "repository": "github:kevmodrome/elderjs-plugin-google-fonts",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
-    "css": "^3.0.0",
     "get-google-fonts": "^1.2.2"
   }
 }

@@ -34,7 +34,7 @@ const plugin = {
       name: 'downloads fonts, injects font-face definitions and creates CSS custom properties.',
       description: `A description of what this hook does.`,
       priority: 50,
-      run: async ({ plugin, routes }) => {
+      run: async ({ plugin }) => {
         const { settings, options, url } = plugin
 
         const ggf = new GetGoogleFonts(options)
