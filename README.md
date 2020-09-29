@@ -1,4 +1,4 @@
-# elderjs-plugin-google-font-optimizer
+# elderjs-plugin-google-fonts
 
 This plugin fetches fonts from google fonts, generates font-face definitions and inlines those in the head tag.
 
@@ -8,7 +8,7 @@ This plugin fetches fonts from google fonts, generates font-face definitions and
 Simply install and add your config to `elder.config.js`. An example:
 
 ```js
-'elderjs-plugin-google-font-optimizer': {
+'elderjs-plugin-google-fonts': {
   fonts: {
     'Anton': ['400'],
     'Overpass': ['400', '700i'],

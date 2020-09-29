@@ -1,5 +1,5 @@
 {
-  "name": "elderjs-plugin-google-font-optimizer",
+  "name": "elderjs-plugin-google-fonts",
   "version": "1.0.0",
   "description": "Automatically downloads and sets up font-face definitions for Google Fonts.",
   "keywords": [
@@ -15,6 +15,6 @@
   "main": "index.js",
   "dependencies": {
     "css": "^3.0.0",
-    "get-google-fonts": "^1.2.2"
+    "get-google-fonts": "^1.2.2"g
   }
 }
