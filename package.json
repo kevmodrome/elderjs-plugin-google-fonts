@@ -1,0 +1,20 @@
+{
+  "name": "elderjs-plugin-google-font-optimizer",
+  "version": "1.0.0",
+  "description": "Automatically downloads and sets up font-face definitions for Google Fonts.",
+  "keywords": [
+    "elder.js",
+    "elderjs",
+    "svelte",
+    "ssg",
+    "static",
+    "site",
+    "generator"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "css": "^3.0.0",
+    "get-google-fonts": "^1.2.2"
+  }
+}
