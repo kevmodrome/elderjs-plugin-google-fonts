@@ -19,7 +19,7 @@ const plugin = {
 
     plugin.options = {
       outputDir: `${distDir}/`,
-      path: './',
+      path: '/',
       cssFile: 'auto-generated-fonts.css',
       template: '{filename}.{ext}',
       overwriting: true

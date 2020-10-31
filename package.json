@@ -1,6 +1,6 @@
 {
   "name": "elderjs-plugin-google-fonts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automatically downloads and sets up font-face definitions for Google Fonts.",
   "keywords": [
     "elder.js",
