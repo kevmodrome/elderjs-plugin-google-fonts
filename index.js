@@ -7,10 +7,10 @@ const normalizePrefix = (prefix) => {
   if ( !prefix ) return '';
 
   // remove trailing
-  prefix.replace(/\/+$/, '');
+  const trimmed = prefix.replace(/\/+$/, '');
 
   // add leading `/`
-  return prefix[0] === '/' ? prefix : `/${prefix}`;
+  return trimmed[0] === '/' ? trimmed : `/${trimmed}`;
 };
 
 const plugin = {
