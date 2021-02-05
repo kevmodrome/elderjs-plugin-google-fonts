@@ -3,23 +3,34 @@ const fs = require('fs')
 const path = require('path');
 const util = require('util');
 
+const normalizePrefix = (prefix) => {
+  if ( !prefix ) return '';
+
+  // remove trailing
+  const trimmed = prefix.replace(/\/+$/, '');
+
+  // add leading `/`
+  return trimmed[0] === '/' ? trimmed : `/${trimmed}`;
+};
+
 const plugin = {
   name: 'elderjs-plugin-google-font-optimizer',
   description: `A plugin that downloads optimized font files from Google Fonts, adds font-fize definitions for them as well as sets up CSS custom properties for good fallback alternatives.`,
   init: (plugin) => {
-    const { fonts, subsets } = plugin.config
+    const { fonts, subsets, swap, prefix } = plugin.config
     const { distDir } = plugin.settings
+    const normalizedPrefix = normalizePrefix( prefix );
 
     plugin.url = GetGoogleFonts.constructUrl({
-      ...fonts,
-    },
-      subsets
+          ...fonts,
+        },
+        subsets
     )
-    plugin.url += plugin.config.swap ? '&display=swap' : '';
+    plugin.url += swap ? '&display=swap' : '';
 
     plugin.options = {
-      outputDir: `${distDir}/`,
-      path: '/',
+      outputDir: normalizedPrefix ? `${distDir}${normalizedPrefix}` : `${distDir}/`,
+      path: normalizedPrefix ? `${normalizedPrefix}/` : '/',
       cssFile: 'auto-generated-fonts.css',
       template: '{filename}.{ext}',
       overwriting: true
@@ -34,7 +45,8 @@ const plugin = {
       description: `A description of what this hook does.`,
       priority: 50,
       run: async ({ plugin }) => {
-        const { settings, options, url } = plugin
+        const { settings, options, url, config: { prefix } } = plugin
+        const normalizedPrefix = normalizePrefix( prefix );
 
         const ggf = new GetGoogleFonts(options)
 
@@ -42,9 +54,9 @@ const plugin = {
 
         const readFile = util.promisify(fs.readFile);
 
-        const rawData = await readFile(settings.distDir + '/auto-generated-fonts.css')
+        const fileDir = normalizedPrefix ? settings.distDir + normalizedPrefix : settings.distDir;
+        const rawData = await readFile(fileDir + '/auto-generated-fonts.css')
         const cssContent = rawData.toString('utf8')
-
 
         plugin.fonts = cssContent
 
