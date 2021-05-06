@@ -15,7 +15,7 @@ const normalizePrefix = (prefix) => {
 
 const plugin = {
   name: 'elderjs-plugin-google-font-optimizer',
-  description: `A plugin that downloads optimized font files from Google Fonts, adds font-fize definitions for them as well as sets up CSS custom properties for good fallback alternatives.`,
+  description: `A plugin that downloads optimized font files from Google Fonts, adds font-size definitions for them as well as sets up CSS custom properties for good fallback alternatives.`,
   init: (plugin) => {
     const { fonts, subsets, swap, prefix } = plugin.config
     const { distDir } = plugin.settings
